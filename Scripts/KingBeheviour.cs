@@ -33,6 +33,7 @@ public class KingBeheviour : MonoBehaviour
         agent.updateUpAxis = false;
         agent.updateRotation = false;
         animator = gameObject.GetComponent<Animator>();
+        agent.speed = 5;
 
         points = new List<Vector2>();
         points.Add(new Vector2(-1.33f, 9.36f));

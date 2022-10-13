@@ -79,7 +79,7 @@ public class PigBehaviour : MonoBehaviour
             isDetected = !isDetected;
         }
 
-        if (Input.GetKey(KeyCode.None))
+        if (!Input.anyKey)
         {
             animator.SetBool("isRun", false);
         }
