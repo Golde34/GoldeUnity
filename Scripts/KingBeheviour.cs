@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
@@ -18,6 +19,8 @@ public class KingBeheviour : MonoBehaviour
     Vector2 localScale;
     Animator animator;
     Vector2 placeToGo; 
+
+    public GameOverS gameOver;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +61,12 @@ public class KingBeheviour : MonoBehaviour
         {
             Debug.Log("Out of sight");
             walkRandomly();
+        }
+
+        if (Math.Abs(gameObject.transform.position.x - target.position.x) < 0.5 &&
+            Math.Abs(gameObject.transform.position.y - target.position.y) < 0.5)
+        {
+            gameOver.Setup();
         }
     }
 
