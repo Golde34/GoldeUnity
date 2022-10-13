@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
@@ -14,6 +15,8 @@ public class KingBeheviour : MonoBehaviour
     List<Vector3> point;
     Vector2 localScale;
     Animator animator;
+
+    public GameOverS gameOver;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +62,12 @@ public class KingBeheviour : MonoBehaviour
         {
             agent.isStopped = true;
             animator.SetBool("isRun", false);
+        }
+
+        if (Math.Abs(gameObject.transform.position.x - target.position.x) < 0.5 &&
+            Math.Abs(gameObject.transform.position.y - target.position.y) < 0.5)
+        {
+            gameOver.Setup();
         }
     }
 
