@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,7 +18,8 @@ public class KingBeheviour : MonoBehaviour
     List<Vector3> point;
     Vector2 localScale;
     Animator animator;
-    Vector2 placeToGo; 
+    Vector2 placeToGo;
+    public GameOverScript gameOverScript;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +61,14 @@ public class KingBeheviour : MonoBehaviour
         {
             Debug.Log("Out of sight");
             walkRandomly();
+        }
+
+        float difX = Mathf.Abs(target.transform.position.x - agent.transform.position.x);
+        float difY = Mathf.Abs(target.transform.position.y - agent.transform.position.y);
+
+        if (difX < 0.2 && difY < 0.2)
+        {
+            gameOverScript.Setup();
         }
     }
 
