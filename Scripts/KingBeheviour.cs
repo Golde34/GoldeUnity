@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -19,7 +20,8 @@ public class KingBeheviour : MonoBehaviour
     List<Vector3> point;
     Vector2 localScale;
     Animator animator;
-    Vector2 placeToGo; 
+    Vector2 placeToGo;
+    public GameOverScript gameOverScript;
 
     public GameOverS gameOver;
 
@@ -65,10 +67,13 @@ public class KingBeheviour : MonoBehaviour
             walkRandomly();
         }
 
-        if (Math.Abs(gameObject.transform.position.x - target.position.x) < 0.5 &&
-            Math.Abs(gameObject.transform.position.y - target.position.y) < 0.5)
+
+        float difX = Mathf.Abs(target.transform.position.x - agent.transform.position.x);
+        float difY = Mathf.Abs(target.transform.position.y - agent.transform.position.y);
+
+        if (difX < 0.2 && difY < 0.2)
         {
-            gameOver.Setup();
+            gameOverScript.Setup();
         }
     }
 
