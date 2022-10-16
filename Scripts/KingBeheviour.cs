@@ -23,8 +23,6 @@ public class KingBeheviour : MonoBehaviour
     Vector2 placeToGo;
     public GameOverScript gameOverScript;
 
-    public GameOverS gameOver;
-
     // Start is called before the first frame update
     void Start()
     {
