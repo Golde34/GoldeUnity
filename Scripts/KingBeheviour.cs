@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
@@ -6,6 +7,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class KingBeheviour : MonoBehaviour
 {
@@ -20,6 +22,8 @@ public class KingBeheviour : MonoBehaviour
     Animator animator;
     Vector2 placeToGo;
     public GameOverScript gameOverScript;
+
+    public GameOverS gameOver;
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +66,7 @@ public class KingBeheviour : MonoBehaviour
             Debug.Log("Out of sight");
             walkRandomly();
         }
+
 
         float difX = Mathf.Abs(target.transform.position.x - agent.transform.position.x);
         float difY = Mathf.Abs(target.transform.position.y - agent.transform.position.y);
