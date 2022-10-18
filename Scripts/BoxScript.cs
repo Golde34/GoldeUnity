@@ -15,7 +15,7 @@ public class BoxScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isDestroy)
+        if (isDestroy)
         {
             Debug.Log("Boom!");
             Destroy(gameObject);

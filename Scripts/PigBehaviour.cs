@@ -85,13 +85,20 @@ public class PigBehaviour : MonoBehaviour
     {
         if (collision.gameObject.name.StartsWith("Box"))
         {
-            Debug.Log("Hit");
-            if (Input.GetKey(KeyCode.Space))
-            {
-                Debug.Log("Break this!");
-                BoxScript boxScript = collision.gameObject.GetComponent<BoxScript>();
-                boxScript.isDestroy = true;
-            }
+            StartCoroutine(BreakBox(collision));
+            
         }
+    }
+
+    IEnumerator BreakBox(Collision2D collision)
+    {
+        animator.SetBool("canAttack", true);
+        BoxScript boxScript = collision.gameObject.GetComponent<BoxScript>();
+
+        yield return new WaitForSeconds(0.5f);
+
+        boxScript.isDestroy = true;
+        animator.SetBool("canAttack", false);
+
     }
 }

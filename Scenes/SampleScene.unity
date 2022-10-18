@@ -1773,11 +1773,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5513218083602354382, guid: 08fd0ccb3608c604fad7cb3e2352a22e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10
+      value: 2.82
       objectReference: {fileID: 0}
     - target: {fileID: 5513218083602354382, guid: 08fd0ccb3608c604fad7cb3e2352a22e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.46
+      value: 7.84
       objectReference: {fileID: 0}
     - target: {fileID: 5513218083602354382, guid: 08fd0ccb3608c604fad7cb3e2352a22e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1844,3 +1844,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.22, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &2024290472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024290468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8cd5e919f48be4e9a5d378858e962e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDestroy: 0
