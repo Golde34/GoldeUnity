@@ -74,14 +74,24 @@ public class PigBehaviour : MonoBehaviour
             animator.SetBool("isRun", true);
             GoDown(0.5f);
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            isDetected = !isDetected;
-        }
 
         if (!Input.anyKey)
         {
             animator.SetBool("isRun", false);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name.StartsWith("Box"))
+        {
+            Debug.Log("Hit");
+            if (Input.GetKey(KeyCode.Space))
+            {
+                Debug.Log("Break this!");
+                BoxScript boxScript = collision.gameObject.GetComponent<BoxScript>();
+                boxScript.isDestroy = true;
+            }
         }
     }
 }

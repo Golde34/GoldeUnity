@@ -61,13 +61,21 @@ public class KingBeheviour : MonoBehaviour
         }
         else
         {
-            Debug.Log("Out of sight");
             walkRandomly();
         }
 
 
         float difX = Mathf.Abs(target.transform.position.x - agent.transform.position.x);
         float difY = Mathf.Abs(target.transform.position.y - agent.transform.position.y);
+
+        if (difX < 2 && difY < 2)
+        {
+            animator.SetBool("canAttack", true);
+        }
+        else
+        {
+            animator.SetBool("canAttack", false);
+        }
 
         if (difX < 0.2 && difY < 0.2)
         {
@@ -112,8 +120,6 @@ public class KingBeheviour : MonoBehaviour
             int index = Random.RandomRange(0, points.Count - 1);
 
             placeToGo = points[index];
-
-            Debug.Log(placeToGo);
         }
     }
 
@@ -138,8 +144,7 @@ public class KingBeheviour : MonoBehaviour
                 this.gameObject.transform.localScale = localScale;
             }
         }
-        DrawPath(agent.path);
-        animator.SetBool("isRun", true);
+        //DrawPath(agent.path);
     }
 
     private void DrawPath(NavMeshPath path)
