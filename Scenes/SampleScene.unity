@@ -1284,7 +1284,7 @@ MonoBehaviour:
   m_AffectedAgents: ffffffff
 --- !u!1 &1617315933 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 4418932733148397651, guid: 032040a828ed454448886b6ffe0b27f5, type: 3}
+  m_CorrespondingSourceObject: {fileID: -7036083924196481310, guid: 032040a828ed454448886b6ffe0b27f5, type: 3}
   m_PrefabInstance: {fileID: 1617315928}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1617315934
