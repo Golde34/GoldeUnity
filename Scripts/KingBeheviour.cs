@@ -144,7 +144,7 @@ public class KingBeheviour : MonoBehaviour
                 this.gameObject.transform.localScale = localScale;
             }
         }
-        //DrawPath(agent.path);
+        DrawPath(agent.path);
     }
 
     private void DrawPath(NavMeshPath path)
@@ -159,7 +159,6 @@ public class KingBeheviour : MonoBehaviour
             {
                 lineRenderer.SetPosition(j, point[j]);
             }
-
             i++;
         }
     }

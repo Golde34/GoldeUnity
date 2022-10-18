@@ -5,7 +5,6 @@ using UnityEngine;
 public class BoxScript : MonoBehaviour
 {
     public bool isDestroy;
-
     // Start is called before the first frame update
     void Start()
     {
