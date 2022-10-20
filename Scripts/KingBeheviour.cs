@@ -47,7 +47,7 @@ public class KingBeheviour : MonoBehaviour
         points.Add(new Vector2(58.06f, -27.7f));
         points.Add(new Vector2(61.51f, -15.09f));
 
-        int index = Random.RandomRange(0, points.Count - 1);
+        int index = Random.Range(0, points.Count - 1);
 
         placeToGo = points[index];
     }
@@ -77,7 +77,7 @@ public class KingBeheviour : MonoBehaviour
             animator.SetBool("canAttack", false);
         }
 
-        if (difX < 0.2 && difY < 0.2)
+        if (difX < 0.5 && difY < 0.5)
         {
             gameOverScript.Setup();
         }
@@ -117,7 +117,7 @@ public class KingBeheviour : MonoBehaviour
 
         if (difX < 0.5 && difY < 0.5)
         {
-            int index = Random.RandomRange(0, points.Count - 1);
+            int index = Random.Range(0, points.Count - 1);
 
             placeToGo = points[index];
         }
