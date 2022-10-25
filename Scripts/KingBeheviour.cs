@@ -113,8 +113,6 @@ public class KingBeheviour : MonoBehaviour
             }
         }
 
-        animator.SetBool("isRun", true);
-
         if (difX < 0.5 && difY < 0.5)
         {
             int index = Random.Range(0, points.Count - 1);
@@ -144,7 +142,7 @@ public class KingBeheviour : MonoBehaviour
                 this.gameObject.transform.localScale = localScale;
             }
         }
-        DrawPath(agent.path);
+        //DrawPath(agent.path);
     }
 
     private void DrawPath(NavMeshPath path)

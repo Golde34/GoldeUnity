@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoxScript : MonoBehaviour
 {
     public bool isDestroy;
+    public string type;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,10 @@ public class BoxScript : MonoBehaviour
     {
         if (isDestroy)
         {
-            Debug.Log("Boom!");
+            if (type == "money")
+            {
+                ScoreManager.instance.AddPoint();
+            }
             Destroy(gameObject);
         }
     }

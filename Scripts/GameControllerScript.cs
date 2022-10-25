@@ -11,6 +11,7 @@ using Random = UnityEngine.Random;
 
 public class GameControllerScript : MonoBehaviour
 {
+    public int totalTreasure;
     public GameObject boxPrefab;
     public List<GameObject> boxPrefabs = new List<GameObject>();
     public Location[] locationPoints;
@@ -38,8 +39,6 @@ public class GameControllerScript : MonoBehaviour
 
     void randomBox()
     {
-        
-        
         int hiddingBoxLength = 0;
         int treasureBoxLength = 0;
         int emptyBoxLength = 0;
@@ -81,6 +80,8 @@ public class GameControllerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        totalTreasure = treasureboxLocation.Count;
+
         getLocationList();
         //Then use JsonUtility.FromJson<T>() to deserialize jsonTextFile into an object 
         randomBox();
@@ -95,9 +96,23 @@ public class GameControllerScript : MonoBehaviour
         //    boxPrefabs.Add(box);
         //}
 
-        for (int i = 0; i < hiddingBoxLocation.ToArray().Length; i++)
+        for (int i = 0; i < emptyBoxLocation.ToArray().Length; i++)
         {
-            GameObject box = Instantiate(boxPrefab, new Vector2(hiddingBoxLocation.ToArray()[i].x, hiddingBoxLocation.ToArray()[i].y), Quaternion.identity);
+            GameObject box = Instantiate(boxPrefab, new Vector2(emptyBoxLocation.ToArray()[i].x, emptyBoxLocation.ToArray()[i].y), Quaternion.identity);
+            
+            BoxScript boxScript = box.GetComponent<BoxScript>();
+            boxScript.type = "empty";
+
+            boxPrefabs.Add(box);
+        }
+        
+        for (int i = 0; i < treasureboxLocation.ToArray().Length; i++)
+        {
+            GameObject box = Instantiate(boxPrefab, new Vector2(treasureboxLocation.ToArray()[i].x, treasureboxLocation.ToArray()[i].y), Quaternion.identity);
+            
+            BoxScript boxScript = box.GetComponent<BoxScript>();
+            boxScript.type = "money";
+
             boxPrefabs.Add(box);
         }
     }
