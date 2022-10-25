@@ -36,18 +36,18 @@ public class KingBeheviour : MonoBehaviour
         agent.speed = 5;
 
         points = new List<Vector2>();
-        points.Add(new Vector2(-1.33f, 9.36f));
-        points.Add(new Vector2(14.15f, 10.05f));
-        points.Add(new Vector2(2.69f, -5.05f));
-        points.Add(new Vector2(-3.72f, -4.62f));
-        points.Add(new Vector2(15.83f, -6.3f));
-        points.Add(new Vector2(13.24f, -30.31f));
-        points.Add(new Vector2(42.89f, -1.35f));
-        points.Add(new Vector2(49.84f, -8.61f));
-        points.Add(new Vector2(44.36f, -25.29f));
-        points.Add(new Vector2(54.86f, -25.37f));
+        points.Add(new Vector2(0.66f, 7.61f));
+        points.Add(new Vector2(14.15f, 8.32f));
+        points.Add(new Vector2(5.24f, -5.43f));
+        points.Add(new Vector2(-1.8f, -6.14f));
+        points.Add(new Vector2(19.18f, -6.59f));
+        points.Add(new Vector2(15.81f, -34.7f));
+        points.Add(new Vector2(40.91f, -7.1f));
+        points.Add(new Vector2(46.79f, -27.36f));
+        points.Add(new Vector2(58.06f, -27.7f));
+        points.Add(new Vector2(61.51f, -15.09f));
 
-        int index = Random.RandomRange(0, points.Count - 1);
+        int index = Random.Range(0, points.Count - 1);
 
         placeToGo = points[index];
     }
@@ -61,7 +61,6 @@ public class KingBeheviour : MonoBehaviour
         }
         else
         {
-            Debug.Log("Out of sight");
             walkRandomly();
         }
 
@@ -69,7 +68,16 @@ public class KingBeheviour : MonoBehaviour
         float difX = Mathf.Abs(target.transform.position.x - agent.transform.position.x);
         float difY = Mathf.Abs(target.transform.position.y - agent.transform.position.y);
 
-        if (difX < 0.2 && difY < 0.2)
+        if (difX < 2 && difY < 2)
+        {
+            animator.SetBool("canAttack", true);
+        }
+        else
+        {
+            animator.SetBool("canAttack", false);
+        }
+
+        if (difX < 0.5 && difY < 0.5)
         {
             gameOverScript.Setup();
         }
@@ -109,11 +117,9 @@ public class KingBeheviour : MonoBehaviour
 
         if (difX < 0.5 && difY < 0.5)
         {
-            int index = Random.RandomRange(0, points.Count - 1);
+            int index = Random.Range(0, points.Count - 1);
 
             placeToGo = points[index];
-
-            Debug.Log(placeToGo);
         }
     }
 
@@ -139,7 +145,6 @@ public class KingBeheviour : MonoBehaviour
             }
         }
         DrawPath(agent.path);
-        animator.SetBool("isRun", true);
     }
 
     private void DrawPath(NavMeshPath path)
@@ -154,7 +159,6 @@ public class KingBeheviour : MonoBehaviour
             {
                 lineRenderer.SetPosition(j, point[j]);
             }
-
             i++;
         }
     }
