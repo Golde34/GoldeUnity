@@ -11,7 +11,7 @@ public class BoxScript : MonoBehaviour
     public bool first = true;
     Animator animator;
     // Start is called before the first frame update
-    void Start()
+    void Start()    
     {
         isDestroy = false;
         animator = gameObject.GetComponent<Animator>();

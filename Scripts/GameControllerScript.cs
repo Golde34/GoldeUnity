@@ -12,6 +12,7 @@ using Random = UnityEngine.Random;
 public class GameControllerScript : MonoBehaviour
 {
     public int totalTreasure;
+    
     public GameObject boxPrefab;
     public List<GameObject> boxPrefabs = new List<GameObject>();
     public Location[] locationPoints;
@@ -33,7 +34,6 @@ public class GameControllerScript : MonoBehaviour
         totalTreasure = treasureboxLocation.Count;
         return totalTreasure;
     }
-
     void randomSize(int locationLength, int hiddingboxLength, int treasureboxLength, int emptyboxLength)
     {
         //int randomBoxlength = Random.Range(0, locationLength);
@@ -41,8 +41,6 @@ public class GameControllerScript : MonoBehaviour
         locationLength -= hiddingboxLength;
         treasureboxLength = Random.Range(0, locationLength);
         emptyboxLength = locationLength - treasureboxLength;
-
-        ScoreManager.instance.totalTreasure = treasureboxLength;
     }
 
     void randomBox()
@@ -55,8 +53,6 @@ public class GameControllerScript : MonoBehaviour
         locationLength -= hiddingBoxLength;
         treasureBoxLength = Random.Range(10, locationLength);
         emptyBoxLength = locationLength - treasureBoxLength;
-
-
 
         // set temp locations boxs
         for (int i = 0; i < locationPoints.Length; i++)
@@ -90,8 +86,6 @@ public class GameControllerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        totalTreasure = treasureboxLocation.Count;
-
         getLocationList();
         //Then use JsonUtility.FromJson<T>() to deserialize jsonTextFile into an object 
         randomBox();
@@ -109,7 +103,6 @@ public class GameControllerScript : MonoBehaviour
         for (int i = 0; i < emptyBoxLocation.ToArray().Length; i++)
         {
             GameObject box = Instantiate(boxPrefab, new Vector2(emptyBoxLocation.ToArray()[i].x, emptyBoxLocation.ToArray()[i].y), Quaternion.identity);
-            
             BoxScript boxScript = box.GetComponent<BoxScript>();
             boxScript.type = "empty";
 
