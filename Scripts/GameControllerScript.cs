@@ -28,6 +28,12 @@ public class GameControllerScript : MonoBehaviour
         Debug.Log(locationPoints.Length);
     }
 
+    public int GetTotalTreasure(int totalTreasure)
+    {
+        totalTreasure = treasureboxLocation.Count;
+        return totalTreasure;
+    }
+
     void randomSize(int locationLength, int hiddingboxLength, int treasureboxLength, int emptyboxLength)
     {
         //int randomBoxlength = Random.Range(0, locationLength);

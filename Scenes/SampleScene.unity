@@ -539,8 +539,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278255615
+  m_fontColor: {r: 1, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1008,7 +1008,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.1009955
+  orthographic size: 13.274778
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1387,6 +1387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: {fileID: 310630684}
+  gameController: {fileID: 879707284}
 --- !u!1 &879707283
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,11 +2257,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5513218083602354382, guid: 08fd0ccb3608c604fad7cb3e2352a22e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 50.18
       objectReference: {fileID: 0}
     - target: {fileID: 5513218083602354382, guid: 08fd0ccb3608c604fad7cb3e2352a22e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -10.21
       objectReference: {fileID: 0}
     - target: {fileID: 5513218083602354382, guid: 08fd0ccb3608c604fad7cb3e2352a22e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2607,7 +2608,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853650617}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.48, y: -7.13, z: 0.00000023841858}
+  m_LocalPosition: {x: 40.28, y: -7, z: 0.00000023841858}
   m_LocalScale: {x: 3, y: 3.000001, z: 1.0000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
