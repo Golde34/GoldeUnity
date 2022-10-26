@@ -35,6 +35,8 @@ public class GameControllerScript : MonoBehaviour
         locationLength -= hiddingboxLength;
         treasureboxLength = Random.Range(0, locationLength);
         emptyboxLength = locationLength - treasureboxLength;
+
+        ScoreManager.instance.totalTreasure = treasureboxLength;
     }
 
     void randomBox()
@@ -47,6 +49,8 @@ public class GameControllerScript : MonoBehaviour
         locationLength -= hiddingBoxLength;
         treasureBoxLength = Random.Range(10, locationLength);
         emptyBoxLength = locationLength - treasureBoxLength;
+
+
 
         // set temp locations boxs
         for (int i = 0; i < locationPoints.Length; i++)
@@ -61,13 +65,13 @@ public class GameControllerScript : MonoBehaviour
             treasureboxLocation.Add(location);
             locationPoints = locationPoints.Where(p => p != location).ToArray();
         }
-        for (int i = 0; i < hiddingBoxLength; i++)
-        {
-            int randomIndex = Random.Range(0, locationPoints.Length - 1);
-            Location location = locationPoints[randomIndex];
-            hiddingBoxLocation.Add(location);
-            locationPoints = locationPoints.Where(p => p != location).ToArray();
-        }
+        //for (int i = 0; i < hiddingBoxLength; i++)
+        //{
+        //    int randomIndex = Random.Range(0, locationPoints.Length - 1);
+        //    Location location = locationPoints[randomIndex];
+        //    hiddingBoxLocation.Add(location);
+        //    locationPoints = locationPoints.Where(p => p != location).ToArray();
+        //}
         for (int i = 0; i < emptyBoxLength; i++)
         {
             int randomIndex = Random.Range(0, locationPoints.Length - 1);
