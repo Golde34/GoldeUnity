@@ -11,6 +11,8 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI score;
 
     int scoreCount = 0;
+    int totalTreasure = 0;
+    public GameControllerScript gameController;
 
     // Start is called before the first frame update
     void Start()
@@ -20,13 +22,16 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this; 
+        instance = this;
     }
 
     public void AddPoint()
     {
         scoreCount++;
-        score.text = "Treasure Box found: " + scoreCount.ToString();
+        int t = gameController.GetTotalTreasure(totalTreasure);
+        score.text = "Treasure Box found: " + scoreCount.ToString() + "/" + t;
+        
+
     }
 
     // Update is called once per frame
