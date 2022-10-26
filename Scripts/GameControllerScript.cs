@@ -41,8 +41,6 @@ public class GameControllerScript : MonoBehaviour
         locationLength -= hiddingboxLength;
         treasureboxLength = Random.Range(0, locationLength);
         emptyboxLength = locationLength - treasureboxLength;
-
-        ScoreManager.instance.totalTreasure = treasureboxLength;
     }
 
     void randomBox()
