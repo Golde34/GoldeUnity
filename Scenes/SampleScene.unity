@@ -1029,7 +1029,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.2046804
+  orthographic size: 22.791399
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1806,6 +1806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1853650618}
+  locationPoints: []
   gameOverScript: {fileID: 1862718104}
 --- !u!120 &1144273879
 LineRenderer:
@@ -2177,11 +2178,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5513218083602354382, guid: 08fd0ccb3608c604fad7cb3e2352a22e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.4
+      value: 59.2
       objectReference: {fileID: 0}
     - target: {fileID: 5513218083602354382, guid: 08fd0ccb3608c604fad7cb3e2352a22e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.5
+      value: -23.3
       objectReference: {fileID: 0}
     - target: {fileID: 5513218083602354382, guid: 08fd0ccb3608c604fad7cb3e2352a22e, type: 3}
       propertyPath: m_LocalPosition.z
