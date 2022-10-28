@@ -22,6 +22,7 @@ public class KingBeheviour : MonoBehaviour
     Animator animator;
     Vector2 placeToGo;
     public GameOverScript gameOverScript;
+    Boolean isOver = false;
 
     // Start is called before the first frame update
     void Start()
@@ -74,9 +75,15 @@ public class KingBeheviour : MonoBehaviour
             animator.SetBool("canAttack", false);
         }
 
-        if (difX < 0.5 && difY < 0.5)
+        if (difX < 0.7 && difY < 0.7)
         {
             gameOverScript.Setup();
+            isOver = true;
+        }
+        if (Input.GetKey(KeyCode.Space) && isOver == true)
+        {
+            gameOverScript.RestartButton();
+            isOver = false;
         }
     }
 
