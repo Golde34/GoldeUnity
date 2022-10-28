@@ -14,7 +14,7 @@ public class KingBeheviour : MonoBehaviour
     [SerializeField] Transform target;
 
     List<Vector2> points;
-
+    public Location[] locationPoints;
     private NavMeshAgent agent;
     LineRenderer lineRenderer;
     List<Vector3> point;
@@ -36,16 +36,13 @@ public class KingBeheviour : MonoBehaviour
         agent.speed = 5;
 
         points = new List<Vector2>();
-        points.Add(new Vector2(0.66f, 7.61f));
-        points.Add(new Vector2(14.15f, 8.32f));
-        points.Add(new Vector2(5.24f, -5.43f));
-        points.Add(new Vector2(-1.8f, -6.14f));
-        points.Add(new Vector2(19.18f, -6.59f));
-        points.Add(new Vector2(15.81f, -34.7f));
-        points.Add(new Vector2(40.91f, -7.1f));
-        points.Add(new Vector2(46.79f, -27.36f));
-        points.Add(new Vector2(58.06f, -27.7f));
-        points.Add(new Vector2(61.51f, -15.09f));
+        var jsonTextFile = Resources.Load<TextAsset>("Text/kingCheckLocation");
+        Debug.Log(jsonTextFile.text);
+        locationPoints = JsonHelper.FromJson<Location>(jsonTextFile.text);
+        foreach(var point in locationPoints)
+        {
+            points.Add(new Vector2(point.x, point.y));
+        }
 
         int index = Random.Range(0, points.Count - 1);
 
@@ -94,6 +91,7 @@ public class KingBeheviour : MonoBehaviour
         float difX = Mathf.Abs(agent.transform.position.x - placeToGo.x);
         float difY = Mathf.Abs(agent.transform.position.y - placeToGo.y);
         agent.SetDestination(placeToGo);
+        Debug.Log("place to go: " + placeToGo);
         if (placeToGo.x < gameObject.transform.position.x)
         {
             localScale = gameObject.transform.localScale;

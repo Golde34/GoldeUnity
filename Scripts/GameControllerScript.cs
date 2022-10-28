@@ -37,9 +37,9 @@ public class GameControllerScript : MonoBehaviour
     void randomSize(int locationLength, int hiddingboxLength, int treasureboxLength, int emptyboxLength)
     {
         //int randomBoxlength = Random.Range(0, locationLength);
-        hiddingboxLength = Random.Range(86, 192);
+        hiddingboxLength = Random.Range(120, 192);
         locationLength -= hiddingboxLength;
-        treasureboxLength = Random.Range(0, locationLength);
+        treasureboxLength = Random.Range(30, locationLength);
         emptyboxLength = locationLength - treasureboxLength;
     }
 
@@ -67,13 +67,13 @@ public class GameControllerScript : MonoBehaviour
             treasureboxLocation.Add(location);
             locationPoints = locationPoints.Where(p => p != location).ToArray();
         }
-        //for (int i = 0; i < hiddingBoxLength; i++)
-        //{
-        //    int randomIndex = Random.Range(0, locationPoints.Length - 1);
-        //    Location location = locationPoints[randomIndex];
-        //    hiddingBoxLocation.Add(location);
-        //    locationPoints = locationPoints.Where(p => p != location).ToArray();
-        //}
+        for (int i = 0; i < hiddingBoxLength; i++)
+        {
+            int randomIndex = Random.Range(0, locationPoints.Length - 1);
+            Location location = locationPoints[randomIndex];
+            hiddingBoxLocation.Add(location);
+            locationPoints = locationPoints.Where(p => p != location).ToArray();
+        }
         for (int i = 0; i < emptyBoxLength; i++)
         {
             int randomIndex = Random.Range(0, locationPoints.Length - 1);
@@ -94,7 +94,7 @@ public class GameControllerScript : MonoBehaviour
         Debug.Log("hidding: " + hiddingBoxLocation.ToArray().Length);
         Debug.Log("all points: " + virtualBoxes.ToArray().Length);
 
-        //for (int i = 0; i <virtualBoxes.ToArray().Length; i++)
+        //for (int i = 0; i < virtualBoxes.ToArray().Length; i++)
         //{
         //    GameObject box = Instantiate(boxPrefab, new Vector2(virtualBoxes.ToArray()[i].x, virtualBoxes.ToArray()[i].y), Quaternion.identity);
         //    boxPrefabs.Add(box);
@@ -105,17 +105,14 @@ public class GameControllerScript : MonoBehaviour
             GameObject box = Instantiate(boxPrefab, new Vector2(emptyBoxLocation.ToArray()[i].x, emptyBoxLocation.ToArray()[i].y), Quaternion.identity);
             BoxScript boxScript = box.GetComponent<BoxScript>();
             boxScript.type = "empty";
-
             boxPrefabs.Add(box);
         }
-        
+
         for (int i = 0; i < treasureboxLocation.ToArray().Length; i++)
         {
             GameObject box = Instantiate(boxPrefab, new Vector2(treasureboxLocation.ToArray()[i].x, treasureboxLocation.ToArray()[i].y), Quaternion.identity);
-            
             BoxScript boxScript = box.GetComponent<BoxScript>();
             boxScript.type = "money";
-
             boxPrefabs.Add(box);
         }
     }

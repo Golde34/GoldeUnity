@@ -11,13 +11,13 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI score;
 
     int scoreCount = 0;
-    int totalTreasure = 0;
+    int totalTreasure;
     public GameControllerScript gameController;
 
     // Start is called before the first frame update
     void Start()
     {
-        score.text = "Treasure Box found: "+scoreCount+"/"+ totalTreasure;
+        score.text = "Treasure Box found: " + scoreCount;
     }
 
     private void Awake()
