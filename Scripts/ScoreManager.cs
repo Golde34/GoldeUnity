@@ -13,6 +13,7 @@ public class ScoreManager : MonoBehaviour
     int scoreCount = 0;
     int totalTreasure;
     public GameControllerScript gameController;
+    public PassGameScript passGameController;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,10 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(scoreCount == gameController.GetTotalTreasure(totalTreasure))
+        {
+            Debug.Log("did we win?");
+            passGameController.Setup();
+        }
     }
 }
