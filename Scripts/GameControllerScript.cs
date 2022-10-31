@@ -34,25 +34,20 @@ public class GameControllerScript : MonoBehaviour
         totalTreasure = treasureboxLocation.Count;
         return totalTreasure;
     }
-    void randomSize(int locationLength, int hiddingboxLength, int treasureboxLength, int emptyboxLength)
-    {
-        //int randomBoxlength = Random.Range(0, locationLength);
-        hiddingboxLength = Random.Range(120, 192);
-        locationLength -= hiddingboxLength;
-        treasureboxLength = Random.Range(30, locationLength);
-        emptyboxLength = locationLength - treasureboxLength;
-    }
-
     void randomBox()
     {
         int hiddingBoxLength = 0;
         int treasureBoxLength = 0;
         int emptyBoxLength = 0;
         int locationLength = locationPoints.Length;
-        hiddingBoxLength = Random.Range(86, 192);
+        hiddingBoxLength = Random.Range(120, 192);
         locationLength -= hiddingBoxLength;
-        treasureBoxLength = Random.Range(10, locationLength);
+        treasureBoxLength = Random.Range(30, locationLength);
         emptyBoxLength = locationLength - treasureBoxLength;
+        //hiddingBoxLength = Random.Range(1, 3);
+        //locationLength -= hiddingBoxLength;
+        //treasureBoxLength = 1;
+        //emptyBoxLength = 0;
 
         // set temp locations boxs
         for (int i = 0; i < locationPoints.Length; i++)

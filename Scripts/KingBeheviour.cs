@@ -98,7 +98,7 @@ public class KingBeheviour : MonoBehaviour
         float difX = Mathf.Abs(agent.transform.position.x - placeToGo.x);
         float difY = Mathf.Abs(agent.transform.position.y - placeToGo.y);
         agent.SetDestination(placeToGo);
-        Debug.Log("place to go: " + placeToGo);
+        //Debug.Log("place to go: " + placeToGo);
         if (placeToGo.x < gameObject.transform.position.x)
         {
             localScale = gameObject.transform.localScale;
