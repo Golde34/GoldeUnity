@@ -23,6 +23,7 @@ public class KingBeheviour : MonoBehaviour
     Vector2 placeToGo;
     public GameOverScript gameOverScript;
     Boolean isOver = false;
+    public AudioSource chaseMusic;
 
     // Start is called before the first frame update
     void Start()
@@ -95,6 +96,7 @@ public class KingBeheviour : MonoBehaviour
 
     private void walkRandomly()
     {
+        chaseMusic.Play(0);
         float difX = Mathf.Abs(agent.transform.position.x - placeToGo.x);
         float difY = Mathf.Abs(agent.transform.position.y - placeToGo.y);
         agent.SetDestination(placeToGo);
