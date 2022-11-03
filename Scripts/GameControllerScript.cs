@@ -7,21 +7,19 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
-
+using Assets.Scripts.Object;
 
 public class GameControllerScript : MonoBehaviour
 {
-    public int totalTreasure;
-    
     public GameObject boxPrefab;
     public List<GameObject> boxPrefabs = new List<GameObject>();
     public Location[] locationPoints;
-    List<Location> virtualBoxes = new List<Location>();
+    private List<Location> virtualBoxes = new List<Location>();
     public List<Location> hiddingBoxLocation;
     public List<Location> treasureboxLocation;
     public List<Location> emptyBoxLocation;
 
-    void getLocationList()
+    private void getLocationList()
     {
         var jsonTextFile = Resources.Load<TextAsset>("Text/boxLocation");
         Debug.Log(jsonTextFile.text);
@@ -34,7 +32,7 @@ public class GameControllerScript : MonoBehaviour
         totalTreasure = treasureboxLocation.Count;
         return totalTreasure;
     }
-    void randomBox()
+    protected void randomBox()
     {
         int hiddingBoxLength = 0;
         int treasureBoxLength = 0;
@@ -82,8 +80,9 @@ public class GameControllerScript : MonoBehaviour
     void Start()
     {
         getLocationList();
-        //Then use JsonUtility.FromJson<T>() to deserialize jsonTextFile into an object 
+
         randomBox();
+
         Debug.Log("treasure: " + treasureboxLocation.ToArray().Length);
         Debug.Log("empty: " + emptyBoxLocation.ToArray().Length);
         Debug.Log("hidding: " + hiddingBoxLocation.ToArray().Length);
@@ -117,38 +116,4 @@ public class GameControllerScript : MonoBehaviour
     {
         
     }
-}
-public static class JsonHelper
-{
-    public static T[] FromJson<T>(string json)
-    {
-        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
-        return wrapper.Items;
-    }
-
-    public static string ToJson<T>(T[] array)
-    {
-        Wrapper<T> wrapper = new Wrapper<T>();
-        wrapper.Items = array;
-        return JsonUtility.ToJson(wrapper);
-    }
-
-    public static string ToJson<T>(T[] array, bool prettyPrint)
-    {
-        Wrapper<T> wrapper = new Wrapper<T>();
-        wrapper.Items = array;
-        return JsonUtility.ToJson(wrapper, prettyPrint);
-    }
-
-    [Serializable]
-    private class Wrapper<T>
-    {
-        public T[] Items;
-    }
-}
-[Serializable]
-public class Location
-{
-    public float x;
-    public float y;
 }

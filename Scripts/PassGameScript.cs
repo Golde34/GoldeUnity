@@ -4,6 +4,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Assets.Scripts.Object;
 
 public class PassGameScript : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class PassGameScript : MonoBehaviour
     {
         gameObject.SetActive(true);
         scoreText.text = score.ToString() + " DIAMONDS";
-        int total = SaveJson(score);
+        int total = SaveTreasure(score);
         totalText.text = "Your total diamonds: " + total.ToString();
     }
 
@@ -23,23 +24,17 @@ public class PassGameScript : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
-    public int SaveJson(int scoreCount)
+    public int SaveTreasure(int scoreCount)
     {
-        //var jsonTextFile = Resources.Load<TextAsset>("Text/playerTreasure");
-        //Debug.Log("score: " + jsonTextFile.text);
-        //Treasure[] treasure = JsonHelper.FromJson<Treasure>(jsonTextFile.text);
-        //treasure[0].total = (int)treasure[0].total + scoreCount;
-        //var s = JsonHelper.ToJson<Treasure>(treasure);
+        // Load total treasure
         var jsonTextFile = Resources.Load<TextAsset>("Text/playerTreasure");
-        Debug.Log("score: " + jsonTextFile.text);
         Treasure treasure = JsonUtility.FromJson<Treasure>(jsonTextFile.text);
-        Debug.Log("onject: " + treasure.totalTreasure);
+        // Calculate total treasure
         int currentTreasure = treasure.totalTreasure;
         int total = currentTreasure + scoreCount;
         treasure.TotalTreasure = total;
-        Debug.Log("treasure: " + treasure.TotalTreasure);
+        // Save treasure
         var savedJson = JsonUtility.ToJson(treasure);
-        Debug.Log("saved json: " + savedJson);
         WriteToFile("Resources/Text/playerTreasure.json", savedJson);
         return total;
     }
@@ -58,16 +53,5 @@ public class PassGameScript : MonoBehaviour
     private string GetFilePath(string fileName)
     {
         return Application.dataPath + "/" + fileName;
-    }
-}
-
-public class Treasure
-{
-    public int totalTreasure;
-
-    public int TotalTreasure
-    {
-        get { return totalTreasure; }
-        set { totalTreasure = value; }
     }
 }

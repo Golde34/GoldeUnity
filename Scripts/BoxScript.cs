@@ -13,6 +13,7 @@ public class BoxScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()    
     {
+        // Setup box locations
         isDestroy = false;
         animator = gameObject.GetComponent<Animator>();
     }

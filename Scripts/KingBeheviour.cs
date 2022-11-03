@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
+using Assets.Scripts.Object;
 
 public class KingBeheviour : MonoBehaviour
 {
