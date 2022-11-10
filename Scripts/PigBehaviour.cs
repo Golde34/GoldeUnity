@@ -62,11 +62,26 @@ public class PigBehaviour : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(mobileJointStick.joistickVec.y != 0)
+        localScale = rigid.transform.localScale;
+        if (mobileJointStick.joistickVec.y != 0)
         {
-           
-            animator.SetBool("isRun", true);
-            rigid.velocity = new Vector2(mobileJointStick.joistickVec.x * playerSpeed, mobileJointStick.joistickVec.y * playerSpeed);       
+            if (localScale.x > 0)
+            {
+                localScale.x *= -1;
+                rigid.transform.localScale = localScale;
+                animator.SetBool("isRun", true);
+                rigid.velocity = new Vector2(mobileJointStick.joistickVec.x * playerSpeed, mobileJointStick.joistickVec.y * playerSpeed);
+            }
+            if (localScale.x < 0)
+            { 
+                localScale.x *= -1;
+                animator.SetBool("isRun", true);
+                rigid.velocity = new Vector2(mobileJointStick.joistickVec.x * playerSpeed, mobileJointStick.joistickVec.y * playerSpeed);
+                rigid.transform.localScale = localScale;
+
+
+
+            }
         }
         else
         {
